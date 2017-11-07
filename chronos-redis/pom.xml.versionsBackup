@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>org.ds.chronos</groupId>
 		<artifactId>chronos-parent</artifactId>
-		<version>1.0.12</version>
+		<version>1.0.11-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>chronos-aws</artifactId>
-	<name>chronos aws tools</name>
+	<artifactId>chronos-redis</artifactId>
+	<name>chronos redis</name>
 	<packaging>jar</packaging>
 
 	<dependencies>
@@ -18,35 +18,23 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk</artifactId>
-			<version>${aws.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk</artifactId>
-			<version>${aws.version}</version>
-			<scope>test</scope>
-			<classifier>sources</classifier>
-		</dependency>
-		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${guava.version}</version>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.1.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.9.5</version>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.1.0</version>
+			<classifier>sources</classifier>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 
 	<build>
 		<plugins>

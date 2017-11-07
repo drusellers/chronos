@@ -4,12 +4,12 @@
   <parent>
     <groupId>org.ds.chronos</groupId>
     <artifactId>chronos-parent</artifactId>
-    <version>1.0.12</version>
+    <version>1.0.11-SNAPSHOT</version>
   </parent>
 
-  <artifactId>chronos-metrics</artifactId>
-  <name>chronos metrics</name>
-  <packaging>jar</packaging>
+  <artifactId>chronos-datastax</artifactId>
+  <name>chronos datastax</name>
+  <packaging>bundle</packaging>
 
   <dependencies>
     <dependency>
@@ -17,12 +17,34 @@
       <artifactId>chronos-api</artifactId>
       <version>${project.version}</version>
     </dependency>
+
     <dependency>
-      <groupId>org.ds.chronos</groupId>
-      <artifactId>chronos-cassandra</artifactId>
-      <version>${project.version}</version>
+      <groupId>com.datastax.cassandra</groupId>
+      <artifactId>cassandra-driver-core</artifactId>
+      <version>3.0.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.datastax.cassandra</groupId>
+      <artifactId>cassandra-driver-core</artifactId>
+      <version>3.0.2</version>
+      <scope>test</scope>
+      <classifier>sources</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${slf4j.version}</version>
       <scope>test</scope>
     </dependency>
+
   </dependencies>
 
   <build>
@@ -41,5 +63,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>

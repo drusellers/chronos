@@ -1,5 +1,7 @@
 package org.ds.chronos.api;
 
+import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalField;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
@@ -15,6 +17,7 @@ import java.util.TimeZone;
  */
 public enum PartitionPeriod {
 
+	HOUR(Calendar.HOUR),
 	DAY(Calendar.DAY_OF_MONTH),
 	MONTH(Calendar.MONTH),
 	YEAR(Calendar.YEAR);
@@ -34,8 +37,10 @@ public enum PartitionPeriod {
 	}
 
 	public final String getPeriodKey(String key, Calendar date) {
-
 		switch (this) {
+		case HOUR:
+			return String.format("%s-%04d-%02d-%02d-%02d", key, date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1,
+			    date.get(Calendar.DAY_OF_MONTH), date.get(Calendar.HOUR_OF_DAY));
 		case DAY:
 			return String.format("%s-%04d-%02d-%02d", key, date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1,
 			    date.get(Calendar.DAY_OF_MONTH));
@@ -81,11 +86,14 @@ public enum PartitionPeriod {
 	}
 
 	private void clearCal(Calendar calendar) {
-		calendar.set(Calendar.AM_PM, 0);
-		calendar.set(Calendar.HOUR, 0);
 		calendar.set(Calendar.MINUTE, 0);
 		calendar.set(Calendar.SECOND, 0);
 		calendar.set(Calendar.MILLISECOND, 0);
+
+		if (this != HOUR) {
+			calendar.set(Calendar.AM_PM, 0);
+			calendar.set(Calendar.HOUR, 0);
+		}
 
 		// We need to fetch every key which could have data. If we
 		// have a query that falls on the 8th, this will account for

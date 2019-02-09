@@ -1,7 +1,5 @@
 package org.ds.chronos.api;
 
-import java.time.temporal.ChronoField;
-import java.time.temporal.TemporalField;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
@@ -79,8 +77,8 @@ public enum PartitionPeriod {
 
 	private Calendar getCalendar(long timestamp) {
 		Calendar calendar = Calendar.getInstance();
-		calendar.setTimeInMillis(timestamp);
 		calendar.setTimeZone(TZ);
+		calendar.setTimeInMillis(timestamp);
 		clearCal(calendar);
 		return calendar;
 	}
